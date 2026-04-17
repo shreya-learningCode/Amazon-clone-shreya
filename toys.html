@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toys</title>
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+<body>
+
+
+    <header>
+        <div class="navbar">
+             <div class="nav-logo border">
+                <div class="logo"></div>
+             </div>
+
+             <div class="nav-address border ">
+                <p class="add-first">Deliver to  </p>
+                <div class="add-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="add-second">India</p>
+
+                </div>
+             </div>
+
+                <div class="nav-search ">
+                    <select class="search-select">
+                        <option>All</option>
+                    </select>
+
+                    <input placeholder="Search Amazon" class="search-input">
+
+                    <div class="search-icon">
+                         <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+                <div class="nav-signing border">
+                    <p><span>Hello, Sign in</span></p>
+                    <p class="nav-second">Account & Lists</p>
+                    </div>
+
+                    <div class="nav-return border">
+                    <p><span>Returns</span></p>
+                    <p class="nav-second">& Orders</p>
+                    </div>
+
+                    <div class="nav-cart border">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Cart
+                 </div>
+        </div>     
+
+                 
+        <div class="panel">
+            <div class="panel-all">
+                    <i class="fa-solid fa-bars"></i>
+                    All
+                </div>
+                <div class="panel-ops">
+                    <p>Today's Deals</p>
+                    <p>Customer Service</p>
+                    <p>Gift Cards</p>
+                    <p>Registry</p>
+                    <p>Sell</p>
+                </div>
+                <div class="panel-deals">
+                 <p>Shop deals in Electronics</p>
+                </div>
+        </div>    
+
+  </header> 
+
+      
+
+  <h1>Toys</h1>
+  <div class="products">  
+    
+    
+
+    <div class="product">
+      <img src="toys1.webp" alt="Toys Product 1">
+      <h3>Toys Product 1</h3>
+      <p>Cost: ₹499</p>
+      <button onclick="viewProduct('Toys Product 1', 499, 'toys1.webp')">View Product</button>
+    </div>
+
+    <div class="product">
+      <img src="toys2.webp" alt="Toys Product 2">
+      <h3>Toys Product 2</h3>
+      <p>Cost: ₹799</p>
+      <button onclick="viewProduct('Toys Product 2', 799, 'toys2.webp')">View Product</button>
+    </div>
+    
+    <div class="product">
+      <img src="toys3.webp" alt="Toys Product 3">
+      <h3>Toys Product 3</h3>
+      <p>Cost: ₹1299</p>
+      <button onclick="viewProduct('Toys Product 3', 1299, 'toys3.webp')">View Product</button>
+    </div>
+    
+    <div class="product">
+      <img src="toys4.webp" alt="Toys Product 4">
+      <h3>Toys Product 4</h3>
+      <p>Cost: ₹1499</p>
+      <button onclick="viewProduct('Toys Product 4', 1499, 'toys4.webp')">View Product</button>
+    </div>
+    
+   <div class="product">
+      <img src="toys5.webp" alt="Toys Product 5">
+      <h3>Toys Product 5</h3>
+      <p>Cost: ₹1999</p>
+      <button onclick="viewProduct('Toys Product 5', 1999, 'toys5.webp')">View Product</button>
+    </div>
+    
+    <div class="product">
+      <img src="toys6.webp" alt="Toys Product 6">
+      <h3>Toys Product 6</h3>
+      <p>Cost: ₹999</p>
+      <button onclick="viewProduct('Toys Product 6', 999, 'toys6.webp')">View Product</button>
+    </div>
+
+    <div class="product">
+      <img src="toys7.webp" alt="Toys Product 7">
+      <h3>Toys Product 7</h3>
+      <p>Cost: ₹799</p>
+      <button onclick="viewProduct('Toys Product 7', 799, 'toys7.webp')">View Product</button>
+    </div>
+
+    <div class="product">
+      <img src="toys8.webp" alt="Toys Product 8">
+      <h3>Toys Product 8</h3>
+      <p>Cost: ₹1499</p>
+      <button onclick="viewProduct('Toys Product 8', 1499, 'toys8.webp')">View Product</button>
+    </div>   
+
+  </div>
+
+  <footer>
+    <p>© 2026 Amazon Clone | Made by You 💙</p>
+  </footer>
+
+  
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function addToCart(name, price) {
+      let existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      alert("Item added to cart!");
+    }
+
+    function updateCartCount() {
+      let total = 0;
+      cart.forEach(item => total += item.quantity);
+      document.getElementById("cart-count").innerText = total;
+    }
+
+  
+    function viewProduct(name, price, image) {
+     let product = { name, price, image };
+
+     localStorage.setItem("selectedProduct", JSON.stringify(product));
+     window.location.href = "product.html";
+   }
+
+   updateCartCount();
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern clothes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <header>
+        <div class="navbar">
+             <div class="nav-logo border">
+                <div class="logo"></div>
+             </div>
+
+             <div class="nav-address border ">
+                <p class="add-first">Deliver to  </p>
+                <div class="add-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="add-second">India</p>
+
+                </div>
+             </div>
+
+                <div class="nav-search ">
+                    <select class="search-select">
+                        <option>All</option>
+                    </select>
+
+                    <input placeholder="Search Amazon" class="search-input">
+
+                    <div class="search-icon">
+                         <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+                <div class="nav-signing border">
+                    <p><span>Hello, Sign in</span></p>
+                    <p class="nav-second">Account & Lists</p>
+                    </div>
+
+                    <div class="nav-return border">
+                    <p><span>Returns</span></p>
+                    <p class="nav-second">& Orders</p>
+                    </div>
+
+                    <div class="nav-cart border">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Cart
+                 </div>
+        </div>     
+
+                 
+        <div class="panel">
+            <div class="panel-all">
+                    <i class="fa-solid fa-bars"></i>
+                    All
+                </div>
+                <div class="panel-ops">
+                    <p>Today's Deals</p>
+                    <p>Customer Service</p>
+                    <p>Gift Cards</p>
+                    <p>Registry</p>
+                    <p>Sell</p>
+                </div>
+                <div class="panel-deals">
+                 <p>Shop deals in Electronics</p>
+                </div>
+        </div>    
+
+  </header> 
+
+      
+
+  <h1>Modern Clothes</h1>
+  <div class="products">  
+    
+    
+
+    <div class="product">
+      <img src="modern1.webp" alt="Casual shirt for women">
+      <h3>Casual shirt for women</h3>
+      <p>Cost: ₹499</p>
+      <button onclick="viewProduct('Casual Shirt', 499 , 'modern1.webp')">View Product</button> 
+    </div>
+
+    <div class="product">
+      <img src="modern2.webp" alt="fancy pants">
+      <h3>Fancy Pants</h3>
+      <p>Cost: ₹999</p>
+      <button onclick="viewProduct('Fancy Pants', 999, 'modern2.webp')">View Product</button>
+    </div>
+    
+    <div class="product">
+      <img src="modern3.webp" alt="Elegant dress">
+      <h3>Elegant Dress</h3>
+      <p>Cost: ₹499</p>
+      <button onclick="viewProduct('Elegant Dress', 499, 'modern3.webp')">View Product</button>
+    </div>
+    
+    <div class="product">
+      <img src="modern5.webp" alt="Stylish dress">
+      <h3>Stylish Dress</h3>
+      <p>Cost: ₹1499</p>
+      <button onclick="viewProduct('Stylish Dress', 1499, 'modern5.webp')">View Product</button>
+    </div>
+    
+   <div class="product">
+      <img src="baggy.jeans.webp" alt="Trendy Jeans">
+      <h3>Trendy Jeans</h3>
+      <p>Cost: ₹1999</p>
+      <button onclick="viewProduct('Trendy Jeans', 1999, 'baggy.jeans.webp')">View Product</button>
+    </div>
+    
+    <div class="product">
+      <img src="blendshirt.webp" alt="Blended Shirt">
+      <h3>Blended Shirt</h3>
+      <p>Cost: ₹799</p>
+      <button onclick="viewProduct('Blended Shirt', 799, 'blendshirt.webp')">View Product</button>
+    </div>
+
+    <div class="product">
+      <img src="casualshirt.webp" alt="Casual Shirt">
+      <h3>Casual Shirt</h3>
+      <p>Cost: ₹1299</p>
+      <button onclick="viewProduct('Casual Shirt', 1299, 'casualshirt.webp')">View Product</button>
+    </div>
+
+    <div class="product">
+      <img src="jeans.webp" alt="Elegant Jeans">
+      <h3>Elegant Jeans</h3>
+      <p>Cost: ₹1499</p>
+      <button onclick="viewProduct('Elegant Jeans', 1499, 'jeans.webp')">View Product</button>
+    </div>   
+
+  </div>
+
+  <footer>
+    <p>© 2026 Amazon Clone | Made by You 💙</p>
+  </footer>
+
+  
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function addToCart(name, price) {
+      let existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      alert("Item added to cart!");
+    }
+
+    function updateCartCount() {
+      let total = 0;
+      cart.forEach(item => total += item.quantity);
+      document.getElementById("cart-count").innerText = total;
+    }
+
+  
+    function viewProduct(name, price, image) {
+     let product = { name, price, image };
+
+     localStorage.setItem("selectedProduct", JSON.stringify(product));
+     window.location.href = "product.html";
+   }
+
+   updateCartCount();
+
+  </script>
+
+
+
+</body>
+</html>

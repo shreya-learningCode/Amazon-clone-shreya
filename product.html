@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+   <header>
+        <div class="navbar">
+             <div class="nav-logo border">
+                <div class="logo"></div>
+             </div>
+
+             <div class="nav-address border ">
+                <p class="add-first">Deliver to  </p>
+                <div class="add-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="add-second">India</p>
+
+                </div>
+             </div>
+
+                <div class="nav-search ">
+                    <select class="search-select">
+                        <option>All</option>
+                    </select>
+
+                    <input placeholder="Search Amazon" class="search-input">
+
+                    <div class="search-icon">
+                         <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+                <div class="nav-signing border">
+                    <p><span>Hello, Sign in</span></p>
+                    <p class="nav-second">Account & Lists</p>
+                    </div>
+
+                    <div class="nav-return border">
+                    <p><span>Returns</span></p>
+                    <p class="nav-second">& Orders</p>
+                    </div>
+
+                    <div class="nav-cart border">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Cart
+                 </div>
+        </div>     
+
+                 
+        <div class="panel">
+            <div class="panel-all">
+                    <i class="fa-solid fa-bars"></i>
+                    All
+                </div>
+                <div class="panel-ops">
+                    <p>Today's Deals</p>
+                    <p>Customer Service</p>
+                    <p>Gift Cards</p>
+                    <p>Registry</p>
+                    <p>Sell</p>
+                </div>
+                <div class="panel-deals">
+                 <p>Shop deals in Electronics</p>
+                </div>
+        </div>    
+
+   </header>   
+
+
+   
+
+  <div class="navbar">Amazon Clone</div>
+
+  <div class="product-container">
+
+    <div class="product-image">
+      <img id="image" src="" width="300">
+    </div>
+
+    <div class="product-details">
+      <h2 id="name"></h2>
+      <p id="price"></p>
+
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <script>
+    let product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+    if (!product) {
+      alert("No product selected!");
+    } else {
+      document.getElementById("name").innerText = product.name;
+      document.getElementById("price").innerText = "₹" + product.price;
+      document.getElementById("image").src = product.image;
+    }
+
+    function addToCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      let existing = cart.find(item => item.name === product.name);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert("Added to cart!");
+    }
+  </script>
+
+</body>
+</html>
